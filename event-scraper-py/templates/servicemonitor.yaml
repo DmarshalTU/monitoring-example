@@ -1,0 +1,13 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: event-scraper-py
+  labels:
+    app: event-scraper-py
+spec:
+  selector:
+    matchLabels:
+      app: event-scraper-py
+  endpoints:
+  - port: event-scraper-py
+    interval: 5s

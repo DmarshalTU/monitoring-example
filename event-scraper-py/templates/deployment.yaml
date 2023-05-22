@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: event-scraper-py
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: event-scraper-py
+  template:
+    metadata:
+      labels:
+        app: event-scraper-py
+    spec:
+      serviceAccountName: event-scraper-py
+      containers:
+      - name: event-scraper-py
+        image: dmarshaltu/event-scraper-py:latest
+        ports:
+        - containerPort: 8000
